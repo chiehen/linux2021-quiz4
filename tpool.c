@@ -185,6 +185,7 @@ static void *jobqueue_fetch(void *queue)
                 pthread_mutex_destroy(&task->future->mutex);
                 pthread_cond_destroy(&task->future->cond_finished);
                 free(task->future);
+                free(ret_value);
             } else {
                 task->future->flag |= __FUTURE_FINISHED;
                 task->future->result = ret_value;
